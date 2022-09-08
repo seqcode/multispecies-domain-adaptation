@@ -1,0 +1,22 @@
+name: cudaenv
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - pip=20.1.1
+  - python=3.6
+  - h5py=2.10.0
+  - keras=2.4.3
+  - numpy=1.18.5
+  - cudatoolkit=10.1
+  - cudnn=7.6
+  - scikit-learn=0.22.2.post1
+  - scipy=1.4.1
+  - pip:
+    - seaborn==0.9.1
+    - tensorflow==2.2.1
+    - pybedtools==0.8.1
+    - pybigwig==0.3.18
+    - pyfasta==0.5.2
+    - pandas==0.25.3
+prefix: cudaenv

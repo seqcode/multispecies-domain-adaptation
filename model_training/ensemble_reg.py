@@ -93,7 +93,7 @@ if __name__ == "__main__":
 
     print(params.modelfile)
 
-    model_type = 'DA_single_model'
+    model_type = 'kelly'
 
     if model_type == 'DA_single_model':
         custom_objects = {"GradientReversal":GradientReversal,

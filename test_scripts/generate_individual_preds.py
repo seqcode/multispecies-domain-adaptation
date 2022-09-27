@@ -159,7 +159,7 @@ def get_model_file(tf, train_species, run = 1, model_type = "basic_model"):
         return latest_file
 
 
-def load_keras_model(model_file, n, DA = False):
+def load_keras_model(model_file, DA = False):
     print("Loading " + model_file + ".")
     if DA:
         # need to tell Keras how the GRL and the custom loss was implemented
@@ -178,9 +178,9 @@ def get_models_all_runs(tf, train_species, model_type, runs = 1):
     for run in range(runs):
         model_file = get_model_file(tf, train_species, run + 1, model_type = model_type)
         if model_type == "kelly":
-            models.append(load_keras_model(model_file, 2, DA = True))
+            models.append(load_keras_model(model_file, DA = True))
         else:
-            models.append(load_keras_model(model_file, n, DA = False))
+            models.append(load_keras_model(model_file, DA = False))
     return models
 
 def get_preds_file(tf, trained, test_species, model_type):

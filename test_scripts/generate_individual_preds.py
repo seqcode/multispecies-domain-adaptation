@@ -200,26 +200,30 @@ if __name__ == "__main__":
         for tf in TFS:
             for model_type in model_types:
 
-                print("\n===== " + tf + " " + test_species + " test, " + train_species + " trained " + model_type + "  =====\n")
+                if train_species == 'hg38' and model_type == 'kelly':
+                    pass
+                else:
 
-                # load the independently trained models for the given tf and training species
-                models = get_models_all_runs(tf=tf, train_species=train_species, model_type=model_type)
-                
-                # generate predictions for all 5 independent model runs on human data
-                all_model_preds = np.array([get_preds_batched_fast(model, 1024, test_species=test_species) for model in models])
-                
-                # if we got the output of DA model, throw out species preds and keep binding preds
-                # if model_type == "DA" and len(all_model_preds.shape) > 2:
-                #     all_model_preds = all_model_preds[:, 0, :]
-                assert len(all_model_preds.shape) == 2, all_model_preds.shape
-                
-                # save predictions to file
-                preds_file = get_preds_file(tf, train_species, test_species, model_type)
-                np.save(preds_file, all_model_preds.T)
+                    print("\n===== " + tf + " " + test_species + " test, " + train_species + " trained " + model_type + "  =====\n")
 
-                # clear variables and model to avoid unnecessary memory usage
-                del all_model_preds, models
-                keras.backend.clear_session()
+                    # load the independently trained models for the given tf and training species
+                    models = get_models_all_runs(tf=tf, train_species=train_species, model_type=model_type)
+                    
+                    # generate predictions for all 5 independent model runs on human data
+                    all_model_preds = np.array([get_preds_batched_fast(model, 1024, test_species=test_species) for model in models])
+                    
+                    # if we got the output of DA model, throw out species preds and keep binding preds
+                    # if model_type == "DA" and len(all_model_preds.shape) > 2:
+                    #     all_model_preds = all_model_preds[:, 0, :]
+                    assert len(all_model_preds.shape) == 2, all_model_preds.shape
+                    
+                    # save predictions to file
+                    preds_file = get_preds_file(tf, train_species, test_species, model_type)
+                    np.save(preds_file, all_model_preds.T)
+
+                    # clear variables and model to avoid unnecessary memory usage
+                    del all_model_preds, models
+                    keras.backend.clear_session()
 
 
 

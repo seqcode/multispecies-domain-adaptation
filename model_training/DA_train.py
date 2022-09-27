@@ -75,7 +75,15 @@ if __name__ == "__main__":
     
     print(model.summary())
 
-    hist = model.fit_generator(epochs = params.epochs,
+
+    if len(sys.argv) > 4:
+        hist = model.fit_generator(epochs = params.epochs,
+                                steps_per_epoch = params.train_steps,
+                                generator = DASingleTrainGenerator(params),
+                                use_multiprocessing = True, workers = 8,
+                                callbacks = [callback, save_callback])
+    else:
+        hist = model.fit_generator(epochs = params.epochs,
                                 steps_per_epoch = params.train_steps,
                                 generator = DATrainGenerator(params),
                                 use_multiprocessing = True, workers = 8,

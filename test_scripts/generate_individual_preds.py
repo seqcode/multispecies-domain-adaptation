@@ -214,7 +214,7 @@ if __name__ == "__main__":
                 assert len(all_model_preds.shape) == 2, all_model_preds.shape
                 
                 # save predictions to file
-                preds_file = get_preds_file(tf, trained, test_species, model_type)
+                preds_file = get_preds_file(tf, train_species, test_species, model_type)
                 np.save(preds_file, all_model_preds.T)
 
                 # clear variables and model to avoid unnecessary memory usage

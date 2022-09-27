@@ -61,3 +61,20 @@ class DA_Single_Params(Params):
         tmp = ceil(self.seqlen / self.strides)
         return int(tmp * self.convfilters)
 
+    def set_val_labels(self):
+        # to avoid doing this repeatedly later, we load in all binary labels for val set now
+        self.target_val_labels = []
+        self.target_val_steps = []
+        self.target_val_labels = []
+        with open(self.targetvalfile) as f:
+            labels = np.array([int(line.split()[-1]) for line in f])
+        steps = int(floor(labels.shape[0] / self.valbatchsize))
+        self.target_val_steps.append(steps)
+        labels = labels[:steps * self.valbatchsize]
+        self.target_val_labels.append(labels)
+
+        with open(self.sourcevalfile) as f:
+            self.source_val_labels = np.array([int(line.split()[-1]) for line in f])
+        self.source_val_steps = int(floor(self.source_val_labels.shape[0] / self.valbatchsize))
+        self.source_val_labels = self.source_val_labels[:self.source_val_steps * self.valbatchsize]
+

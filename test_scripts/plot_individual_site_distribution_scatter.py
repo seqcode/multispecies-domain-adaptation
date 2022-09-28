@@ -118,7 +118,7 @@ def make_preds_and_labels_dfs(avg_preds, labels):
             try:
                 preds_from_train_species = avg_preds[model][tf]
                 # assert preds_from_train_species.shape[0] == goal_len
-                dict_to_make_into_df[train_species] = preds_from_train_species
+                dict_to_make_into_df[model] = preds_from_train_species
             except:
                 pass
             

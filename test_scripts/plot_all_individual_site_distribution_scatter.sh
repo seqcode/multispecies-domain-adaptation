@@ -23,6 +23,6 @@ cd /storage/home/vza5092/group/projects/cross-species/liver-tfs/scripts/test_scr
 train_genomes="mm10 mm10_DA canFam4 canFam4_DA monDom5 monDom5_DA galGal6 galGal6_DA rn5 rn5_DA rheMac10 rheMac10_DA"
 for train_genome in $train_genomes
 do
-	python3 plot_individual_site_distribution_scatter.py $train_genome $genome
+	python3 plot_individual_site_distribution_scatter.py $train_genome "hg38"
 done
 

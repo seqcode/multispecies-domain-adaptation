@@ -20,21 +20,9 @@ source activate ~/work/tf_env
 
 cd /storage/home/vza5092/group/projects/cross-species/liver-tfs/scripts/test_scripts
 
-tfs="CEBPA FoxA1 HNF4a HNF6"
-
-for tf in $tfs
+train_genomes="mm10 mm10_DA canFam4 canFam4_DA monDom5 monDom5_DA galGal6 galGal6_DA rn5 rn5_DA rheMac10 rheMac10_DA"
+for train_genome in $train_genomes
 do
-	genome=hg38
-	if [[ $tf == "CEBPA" ]]
-	then
-		train_genomes="mm10 mm10_DA canFam4 canFam4_DA monDom5 monDom5_DA galGal6 galGal6_DA rn5 rn5_DA rheMac10 rheMac10_DA"
-	else
-		train_genomes="mm10 mm10_DA canFam4 canFam4_DA rn5 rn5_DA rheMac10 rheMac10_DA"
-	fi
-
-	for train_genome in $train_genomes
-	do
-		python3 plot_individual_site_distribution_scatter.py $train_genome $genome
-	done
+	python3 plot_individual_site_distribution_scatter.py $train_genome $genome
 done
 

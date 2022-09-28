@@ -57,7 +57,7 @@ def load_all_test_set_preds(test_species='hg38'):
         models = big_include
         for model in models:
             
-            print("=== " + tf + ", " + train_species + "-trained ===")
+            print("=== " + tf + ", " + model + "-trained ===")
 
             # load predictions for model runs
             if "DA" in model:

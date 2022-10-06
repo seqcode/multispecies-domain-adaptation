@@ -48,4 +48,5 @@ Instructions:
 * Run `run_generate_preds.sh` to generate predictions on test set for basic, multispecies non-DA, multispecies DA, and ensemble models
 * Run `run_generate_individual_preds.sh` to generate predictions on test set for basic and Kelly DA models
 * Run `plot_auprc_dot_plots.py` with argument `hg38` (this is the test species) to compare model performance (file can be modified to create different plots)
-* Run `plot_site_distribution_scatter.py` with two arguments: second argument is `hg38`, the test species. First argument is model type to compare to hg38 performance, e.g. 'ensemble\_model\_reg' or 'mm10' or 'mm10\_DA'.
+* Run `plot_site_distribution_scatter.py` with two arguments: second argument is `hg38`, the test species. First argument is multispecies model type to compare to hg38 performance, e.g. 'ensemble\_model\_reg' or 'multi_model'.
+* Run `plot_individual_site_distribution_scatter.py` with two arguments: second argument is `hg38`, the test species. First argument is analogous to `plot_site_distribution_scatter.py` but this is used for single-species model comparison; first argument may be e.g. 'mm10' or 'mm10\_DA'.

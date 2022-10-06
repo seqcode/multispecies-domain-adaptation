@@ -28,7 +28,7 @@ GENOMES = {"mm10" : "/storage/home/vza5092/group/genomes/mm10/mm10.fa",
 SPECIES = ["mm10", "hg38", "monDom5", "canFam4", "galGal6", "rn5", "rheMac10"]
 SPECIES_SMALL = ["mm10", "hg38", "canFam4", "rn5", "rheMac10"]
 
-model_types = ["DA_model", "basic_model", "multi_model", "BA_model", "ensemble_model", "ensemble_model_reg"]
+model_types = ["DA_model", "basic_model", "multi_model", "ensemble_model_reg"]
 
 def get_test_bed_file(species):
     # This function returns the path to a BED-format file
@@ -192,7 +192,7 @@ def get_preds_file(tf, trained, test_species, model_type):
     return preds_root + tf + "_" + model_type + "_" + trained + "-trained_" + test_species + "-test.preds"
 
 
-model_types = ["ensemble_model_reg"]
+# model_types = ["ensemble_model_reg"]
 
 if __name__ == "__main__":
     train_species = sys.argv[1]
